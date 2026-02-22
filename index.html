@@ -1,37 +1,69 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Undangan Pernikahan</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- AUDIO -->
+<!-- MUSIC -->
 <audio id="music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- COVER LOCK -->
-<div class="cover" id="cover">
-  <div class="cover-box">
-    <p class="small">Undangan Pernikahan</p>
-    <h1>Nur Indryakni<br>&<br>Muhammad Erfan</h1>
 
-    <div class="divider"></div>
+<!-- ================= ENVELOPE INTRO ================= -->
+<div class="envelope-wrap" id="envelopeWrap">
+  <div class="sparkle"></div>
 
-    <div id="guestBox">
+  <div class="envelope">
+    <div class="flap"></div>
+
+    <div class="letter">
+      <p class="small">Undangan Pernikahan</p>
+      <h2>Nur Indryakni<br>&<br>Muhammad Erfan</h2>
+      <button onclick="openEnvelope()">Buka Undangan</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ================= COVER PREWED ================= -->
+<section class="cover" id="cover">
+
+  <img src="prewed.jpg" class="cover-img">
+
+  <div class="cover-overlay"></div>
+
+  <div class="cover-content">
+    <p class="small fade">The Wedding Of</p>
+
+    <h1 class="title fade">
+      Nur Indryakni<br>&<br>Muhammad Erfan
+    </h1>
+
+    <div id="guestBox" class="fade">
       <p class="small">Kepada Yth.</p>
       <h2 id="guestName">Tamu Undangan</h2>
     </div>
 
-    <button onclick="openInvitation()">Buka Undangan</button>
+    <button onclick="openInvitation()">Masuk</button>
   </div>
-</div>
 
-<!-- MAIN CONTENT -->
-<div class="container hidden" id="content">
+</section>
+
+
+
+<!-- ================= MAIN ================= -->
+<main id="content" class="hidden container">
+
+  <img src="floral-top.png" class="floral top">
+  <img src="floral-bottom.png" class="floral bottom">
+
 
   <!-- AYAT -->
   <section class="card reveal">
@@ -42,23 +74,19 @@
     <p class="small"><b>QS. Ar-Rum : 21</b></p>
   </section>
 
+
   <!-- MEMPELAI -->
   <section class="card reveal">
     <h2>Mempelai</h2>
     <div class="divider"></div>
 
-    <p>
-      <b>Nur Indryakni</b><br>
-      Putri dari Bapak … & Ibu …
-    </p>
+    <p><b>Nur Indryakni</b><br>Putri dari Bapak … & Ibu …</p>
 
     <div class="divider small-divider"></div>
 
-    <p>
-      <b>Muhammad Erfan</b><br>
-      Putra dari Bapak … & Ibu …
-    </p>
+    <p><b>Muhammad Erfan</b><br>Putra dari Bapak … & Ibu …</p>
   </section>
+
 
   <!-- COUNTDOWN -->
   <section class="card reveal">
@@ -66,17 +94,18 @@
     <div id="countdown"></div>
   </section>
 
+
   <!-- AKAD -->
   <section class="card reveal">
     <h2>Akad Nikah</h2>
     <div class="divider"></div>
     <p>
       Sabtu, 12 April 2026<br>
-      Pukul 08.00 WIB<br>
-      Ballroom Emerald Hall<br>
-      Sukodono, Sidoarjo
+      08.00 WIB<br>
+      Ballroom Emerald Hall
     </p>
   </section>
+
 
   <!-- RESEPSI -->
   <section class="card reveal">
@@ -84,92 +113,97 @@
     <div class="divider"></div>
     <p>
       Sabtu, 12 April 2026<br>
-      Pukul 11.00 – 14.00 WIB<br>
-      Ballroom Emerald Hall<br>
-      Sukodono, Sidoarjo
+      11.00 – 14.00 WIB<br>
+      Ballroom Emerald Hall
     </p>
   </section>
 
-  <!-- MAPS -->
+
+  <!-- MAP -->
   <section class="card reveal">
-    <h2>Lokasi Acara</h2>
-    <div class="divider"></div>
-    <a class="btn" target="_blank"
-       href="https://maps.google.com/?q=Ballroom+Emerald+Hall+Sukodono">
+    <h2>Lokasi</h2>
+    <a class="btn"
+       target="_blank"
+       href="https://maps.google.com/?q=Ballroom+Emerald+Hall+Sidoarjo">
        Buka Google Maps
     </a>
   </section>
 
-  <!-- DOA & HADIAH -->
-  <section class="card reveal">
-    <h2>Doa & Hadiah</h2>
-    <div class="divider"></div>
-    <p class="small">
-      Doa restu Anda merupakan karunia yang sangat berarti bagi kami.
-      Apabila berkenan, Anda juga dapat memberikan tanda kasih.
-    </p>
-  </section>
 
   <!-- QRIS -->
   <section class="card reveal">
-    <h2>QRIS</h2>
-    <div class="divider"></div>
-    <img src="qris.png" alt="QRIS" class="qris">
-    <p class="small">a.n. <b>Nur Indryakni</b></p>
+    <h2>Wedding Gift</h2>
+    <p class="small">Scan QRIS berikut</p>
+    <img src="qris.png" class="qris">
   </section>
+
 
   <!-- RSVP -->
   <section class="card reveal">
     <h2>Konfirmasi Kehadiran</h2>
-    <div class="divider"></div>
-    <a class="btn" id="rsvpBtn">RSVP via WhatsApp</a>
+    <a class="btn" id="rsvpBtn">RSVP WhatsApp</a>
   </section>
 
-  <!-- FOOTER -->
+
   <footer>
-    Terima kasih atas doa dan restu Anda<br><br>
+    Terima kasih atas doa & restunya<br><br>
     <b>Nur Indryakni & Muhammad Erfan</b>
   </footer>
 
-</div>
+</main>
+
+
 
 <script>
-/* OPEN INVITATION */
-function openInvitation(){
-  document.getElementById("cover").style.display="none";
-  document.getElementById("content").classList.remove("hidden");
-  document.getElementById("music").play();
+/* ================= ENVELOPE OPEN ================= */
+function openEnvelope(){
+  document.querySelector(".envelope").classList.add("open");
+
+  setTimeout(()=>{
+    envelopeWrap.style.display="none";
+    cover.style.display="flex";
+  },1200);
 }
 
-/* NAMA TAMU */
+/* ================= COVER OPEN ================= */
+function openInvitation(){
+  cover.style.display="none";
+  content.classList.remove("hidden");
+  music.play();
+}
+
+
+/* ================= NAMA TAMU ================= */
 const params=new URLSearchParams(window.location.search);
 const guest=params.get("tamu");
 if(guest){
-  document.getElementById("guestName").innerText=decodeURIComponent(guest);
+  guestName.innerText=decodeURIComponent(guest);
 }
 
-/* RSVP */
-document.getElementById("rsvpBtn").href=
-"https://wa.me/62XXXXXXXXXX?text=Assalamu’alaikum,%20saya%20"+(guest||"tamu")+
-"%20akan%20hadir%20pada%20acara%20pernikahan";
 
-/* COUNTDOWN */
-const target=new Date("April 12, 2026 08:00:00").getTime();
+/* ================= RSVP ================= */
+rsvpBtn.href =
+"https://wa.me/62XXXXXXXXXX?text=Assalamu’alaikum,%20saya%20"+
+(guest||"tamu")+"%20akan%20hadir%20pada%20acara%20pernikahan";
+
+
+/* ================= COUNTDOWN ================= */
+const target=new Date("April 12, 2026 08:00:00");
 setInterval(()=>{
-  const now=new Date().getTime();
-  const d=target-now;
-  if(d<0) return;
-  const days=Math.floor(d/(1000*60*60*24));
-  document.getElementById("countdown").innerHTML=
-  `<b>${days}</b> Hari Menuju Akad`;
+  const now=new Date();
+  const diff=target-now;
+  const d=Math.floor(diff/86400000);
+  countdown.innerHTML="<b>"+d+"</b> Hari Lagi";
 },1000);
 
-/* SCROLL ANIMATION */
-const reveal=document.querySelectorAll(".reveal");
+
+/* ================= REVEAL ================= */
+const reveals=document.querySelectorAll(".reveal");
 window.addEventListener("scroll",()=>{
-  reveal.forEach(el=>{
-    const top=el.getBoundingClientRect().top;
-    if(top<window.innerHeight-80) el.classList.add("active");
+  reveals.forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-80){
+      el.classList.add("active");
+    }
   });
 });
 </script>
