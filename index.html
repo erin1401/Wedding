@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Undangan Pernikahan</title>
+
+<style>
+:root{
+  --krem:#f7f2ea;
+  --biru:#5f7c8a;
+  --gold:#c9a24d;
+}
+
+*{box-sizing:border-box;font-family:'Georgia',serif}
+body{
+  margin:0;
+  background:linear-gradient(180deg,var(--krem),#ffffff);
+  color:#333;
+}
+
+.container{
+  max-width:420px;
+  margin:auto;
+  padding:24px;
+  text-align:center;
+}
+
+.cover{
+  padding:60px 20px;
+  border:2px solid var(--biru);
+  border-radius:16px;
+  background:#fff;
+}
+
+h1{
+  color:var(--biru);
+  letter-spacing:2px;
+  margin-bottom:8px;
+}
+
+h2{
+  color:var(--gold);
+  margin:10px 0;
+}
+
+.divider{
+  width:80px;
+  height:2px;
+  background:var(--gold);
+  margin:16px auto;
+}
+
+.section{
+  margin:40px 0;
+}
+
+.names{
+  font-size:22px;
+  color:var(--biru);
+  font-weight:bold;
+}
+
+.small{
+  font-size:14px;
+  color:#555;
+}
+
+.box{
+  border:1px solid var(--biru);
+  border-radius:14px;
+  padding:16px;
+  margin-top:12px;
+  background:#ffffff;
+}
+
+footer{
+  margin-top:40px;
+  font-size:13px;
+  color:#666;
+}
+
+button{
+  margin-top:20px;
+  padding:12px 20px;
+  border:none;
+  border-radius:20px;
+  background:var(--biru);
+  color:white;
+  font-size:14px;
+  cursor:pointer;
+}
+button:hover{opacity:.85}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- COVER -->
+  <div class="cover">
+    <h1>UNDANGAN</h1>
+    <div class="divider"></div>
+    <h2>Pernikahan</h2>
+    <p class="names">Ahmad Rizky Pratama<br>&<br>Aisyah Nur Khalifah</p>
+    <button onclick="scrollToContent()">Buka Undangan</button>
+  </div>
+
+  <!-- AYAT -->
+  <div class="section" id="content">
+    <p class="small"><i>
+      “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup
+      agar kamu merasa tenteram dan dijadikan-Nya di antaramu rasa kasih dan sayang.”
+    </i></p>
+    <p class="small"><b>QS. Ar-Rum : 21</b></p>
+  </div>
+
+  <!-- MEMPELAI -->
+  <div class="section box">
+    <h2>Mempelai</h2>
+    <p>
+      <b>Ahmad Rizky Pratama</b><br>
+      Putra Bapak H. Sumarno & Ibu Hj. Siti Aminah
+    </p>
+    <div class="divider"></div>
+    <p>
+      <b>Aisyah Nur Khalifah</b><br>
+      Putri Bapak H. Abdul Karim & Ibu Hj. Khadijah
+    </p>
+  </div>
+
+  <!-- AKAD -->
+  <div class="section box">
+    <h2>Akad Nikah</h2>
+    <p>
+      Sabtu, 12 April 2026<br>
+      Pukul 08.00 WIB<br>
+      Masjid Agung Al-Falah<br>
+      Sukodono, Sidoarjo
+    </p>
+  </div>
+
+  <!-- RESEPSI -->
+  <div class="section box">
+    <h2>Resepsi</h2>
+    <p>
+      Sabtu, 12 April 2026<br>
+      Pukul 11.00 – 14.00 WIB<br>
+      Gedung Graha Harmoni<br>
+      Sukodono, Sidoarjo
+    </p>
+  </div>
+
+  <!-- PENUTUP -->
+  <footer>
+    Merupakan suatu kehormatan dan kebahagiaan bagi kami
+    apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
+    <br><br>
+    <b>Ahmad & Aisyah</b><br>
+    Keluarga Besar Kedua Mempelai
+  </footer>
+
+</div>
+
+<script>
+function scrollToContent(){
+  document.getElementById("content").scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+</body>
+</html>
