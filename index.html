@@ -1,171 +1,251 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Undangan Pernikahan</title>
 
 <style>
 :root{
-  --krem:#f7f2ea;
-  --biru:#5f7c8a;
-  --gold:#c9a24d;
+  --emerald:#0f3d3e;
+  --emerald-soft:#1c5a5c;
+  --gold:#d4af37;
+  --cream:#f7f5f0;
 }
 
 *{box-sizing:border-box;font-family:'Georgia',serif}
+
 body{
   margin:0;
-  background:linear-gradient(180deg,var(--krem),#ffffff);
-  color:#333;
+  background:linear-gradient(180deg,var(--emerald),var(--emerald-soft));
+  overflow-x:hidden;
 }
+
+body.locked{overflow:hidden}
 
 .container{
   max-width:420px;
   margin:auto;
   padding:24px;
   text-align:center;
+  position:relative;
 }
 
-.cover{
-  padding:60px 20px;
-  border:2px solid var(--biru);
-  border-radius:16px;
-  background:#fff;
+.card{
+  background:var(--cream);
+  border-radius:20px;
+  padding:24px 18px;
+  margin:42px 0;
 }
 
-h1{
-  color:var(--biru);
-  letter-spacing:2px;
-  margin-bottom:8px;
-}
-
-h2{
-  color:var(--gold);
-  margin:10px 0;
-}
+h1{letter-spacing:3px;color:var(--emerald)}
+h2{color:var(--gold);font-weight:normal}
+.names{font-size:24px;font-weight:bold;color:var(--emerald);line-height:1.6}
 
 .divider{
-  width:80px;
-  height:2px;
-  background:var(--gold);
-  margin:16px auto;
+  width:90px;height:2px;background:var(--gold);
+  margin:18px auto;
 }
 
-.section{
-  margin:40px 0;
-}
-
-.names{
-  font-size:22px;
-  color:var(--biru);
-  font-weight:bold;
-}
-
-.small{
-  font-size:14px;
-  color:#555;
-}
-
-.box{
-  border:1px solid var(--biru);
-  border-radius:14px;
-  padding:16px;
-  margin-top:12px;
-  background:#ffffff;
-}
-
-footer{
-  margin-top:40px;
-  font-size:13px;
-  color:#666;
-}
+.small{font-size:14px;color:#555;line-height:1.6}
 
 button{
-  margin-top:20px;
-  padding:12px 20px;
+  padding:12px 28px;
   border:none;
-  border-radius:20px;
-  background:var(--biru);
+  border-radius:30px;
+  background:var(--emerald);
   color:white;
   font-size:14px;
   cursor:pointer;
 }
-button:hover{opacity:.85}
+button:hover{opacity:.9}
+
+/* LOCK SCREEN */
+.lock-screen{
+  position:fixed;inset:0;
+  background:linear-gradient(180deg,var(--emerald),var(--emerald-soft));
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  transition:.8s;
+}
+.lock-screen.hide{opacity:0;visibility:hidden}
+
+.lock-card{
+  background:var(--cream);
+  border-radius:22px;
+  padding:36px 24px;
+  max-width:360px;
+  width:100%;
+}
+
+/* REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s ease;
+}
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* COUNTDOWN */
+.countdown{
+  display:flex;
+  justify-content:space-around;
+  margin-top:16px;
+}
+.time{
+  background:white;
+  padding:10px;
+  border-radius:12px;
+  min-width:60px;
+}
+.time span{
+  font-size:18px;
+  font-weight:bold;
+  color:var(--emerald);
+}
+.time small{font-size:11px;color:#666}
+
+/* MUSIC BUTTON */
+.music-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--emerald);
+  color:white;
+  border-radius:50%;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  cursor:pointer;
+  z-index:1000;
+}
 </style>
 </head>
 
-<body>
+<body class="locked">
+
+<!-- LOCK SCREEN -->
+<div class="lock-screen" id="lockScreen">
+  <div class="lock-card">
+    <h1>UNDANGAN</h1>
+    <h2>Pernikahan</h2>
+    <p>Kepada Yth.</p>
+    <h2 id="lockGuest">Tamu Undangan</h2>
+    <p>di Tempat</p>
+    <button onclick="openInvitation()">Buka Undangan</button>
+  </div>
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
 
 <div class="container">
 
-  <!-- COVER -->
-  <div class="cover">
-    <h1>UNDANGAN</h1>
-    <div class="divider"></div>
-    <h2>Pernikahan</h2>
-    <p class="names">Ahmad Rizky Pratama<br>&<br>Aisyah Nur Khalifah</p>
-    <button onclick="scrollToContent()">Buka Undangan</button>
-  </div>
+<!-- COVER -->
+<div class="card reveal">
+  <h1>UNDANGAN</h1>
+  <div class="divider"></div>
+  <h2>Pernikahan</h2>
+  <p class="names">Nur Indryakni<br>&<br>Muhammmade Erfan</p>
+</div>
 
-  <!-- AYAT -->
-  <div class="section" id="content">
-    <p class="small"><i>
-      “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup
-      agar kamu merasa tenteram dan dijadikan-Nya di antaramu rasa kasih dan sayang.”
-    </i></p>
-    <p class="small"><b>QS. Ar-Rum : 21</b></p>
-  </div>
+<!-- AYAT -->
+<div class="card reveal">
+  <p class="small"><i>
+    “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup
+    agar kamu merasa tenteram dan dijadikan-Nya di antaramu rasa kasih dan sayang.”
+  </i></p>
+  <p class="small"><b>QS. Ar-Rum : 21</b></p>
+</div>
 
-  <!-- MEMPELAI -->
-  <div class="section box">
-    <h2>Mempelai</h2>
-    <p>
-      <b>Ahmad Rizky Pratama</b><br>
-      Putra Bapak H. Sumarno & Ibu Hj. Siti Aminah
-    </p>
-    <div class="divider"></div>
-    <p>
-      <b>Aisyah Nur Khalifah</b><br>
-      Putri Bapak H. Abdul Karim & Ibu Hj. Khadijah
-    </p>
+<!-- COUNTDOWN -->
+<div class="card reveal">
+  <h2>Menuju Hari Bahagia</h2>
+  <div class="countdown">
+    <div class="time"><span id="days">0</span><small>Hari</small></div>
+    <div class="time"><span id="hours">0</span><small>Jam</small></div>
+    <div class="time"><span id="minutes">0</span><small>Menit</small></div>
+    <div class="time"><span id="seconds">0</span><small>Detik</small></div>
   </div>
+</div>
 
-  <!-- AKAD -->
-  <div class="section box">
-    <h2>Akad Nikah</h2>
-    <p>
-      Sabtu, 12 April 2026<br>
-      Pukul 08.00 WIB<br>
-      Masjid Agung Al-Falah<br>
-      Sukodono, Sidoarjo
-    </p>
-  </div>
+<!-- RSVP -->
+<div class="card reveal">
+  <h2>Konfirmasi Kehadiran</h2>
+  <p class="small">Mohon konfirmasi kehadiran melalui WhatsApp</p>
+  <button onclick="sendRSVP()">Kirim RSVP</button>
+</div>
 
-  <!-- RESEPSI -->
-  <div class="section box">
-    <h2>Resepsi</h2>
-    <p>
-      Sabtu, 12 April 2026<br>
-      Pukul 11.00 – 14.00 WIB<br>
-      Gedung Graha Harmoni<br>
-      Sukodono, Sidoarjo
-    </p>
-  </div>
-
-  <!-- PENUTUP -->
-  <footer>
-    Merupakan suatu kehormatan dan kebahagiaan bagi kami
-    apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
-    <br><br>
-    <b>Ahmad & Aisyah</b><br>
-    Keluarga Besar Kedua Mempelai
-  </footer>
+<footer class="card reveal">
+  Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.
+  <br><br>
+  <b>Nur Indryakni & Muhammmade Erfan</b>
+</footer>
 
 </div>
 
 <script>
-function scrollToContent(){
-  document.getElementById("content").scrollIntoView({behavior:"smooth"});
+/* NAMA TAMU */
+const params=new URLSearchParams(window.location.search);
+const guest=params.get("tamu");
+if(guest){
+  document.getElementById("lockGuest").innerText=
+    decodeURIComponent(guest.replace(/\+/g," "));
+}
+
+/* OPEN INVITATION */
+function openInvitation(){
+  document.getElementById("lockScreen").classList.add("hide");
+  document.body.classList.remove("locked");
+  document.getElementById("music").play();
+}
+
+/* MUSIC */
+let playing=true;
+function toggleMusic(){
+  const m=document.getElementById("music");
+  playing?m.pause():m.play();
+  playing=!playing;
+}
+
+/* SCROLL REVEAL */
+const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+  reveals.forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight-80){
+      el.classList.add("active");
+    }
+  });
+});
+
+/* COUNTDOWN */
+const target=new Date("2026-04-12T08:00:00").getTime();
+setInterval(()=>{
+  const now=new Date().getTime();
+  const diff=target-now;
+  document.getElementById("days").innerText=Math.floor(diff/(1000*60*60*24));
+  document.getElementById("hours").innerText=Math.floor(diff%(1000*60*60*24)/(1000*60*60));
+  document.getElementById("minutes").innerText=Math.floor(diff%(1000*60*60)/(1000*60));
+  document.getElementById("seconds").innerText=Math.floor(diff%(1000*60)/1000);
+},1000);
+
+/* RSVP */
+function sendRSVP(){
+  const name=guest?decodeURIComponent(guest.replace(/\+/g," ")):"Tamu";
+  const text=`Assalamu’alaikum, saya ${name} ingin mengonfirmasi kehadiran di acara pernikahan.`;
+  window.open(`https://wa.me/628XXXXXXXXXX?text=${encodeURIComponent(text)}`);
 }
 </script>
 
