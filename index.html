@@ -3,220 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Undangan Pernikahan</title>
+  <title>Wedding Invitation</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- font elegan -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- MUSIC -->
-<audio id="music" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
+<div class="wrapper">
+
+  <!-- ===== NAMA (tidak nempel amplop lagi) ===== -->
+  <div class="title">
+    <h1>Nur Indrayakni & Muhammad Erfan</h1>
+    <p>Wedding Invitation</p>
+  </div>
 
 
-<!-- ================= ENVELOPE INTRO ================= -->
-<div class="envelope-wrap" id="envelopeWrap">
+  <!-- ===== AMPLOP ===== -->
+  <div class="envelope" id="envelope">
 
-  <audio id="paperSound" src="paper.mp3"></audio>
+      <div class="flap"></div>
 
-  <div class="sparkle"></div>
+      <div class="body">
 
-  <div class="envelope" id="envelopeBox">
+        <!-- monogram -->
+        <div class="monogram">IE</div>
 
-    <!-- emboss monogram -->
-    <div class="monogram">IE</div>
+        <!-- segel emas -->
+        <div class="seal">
+          <svg viewBox="0 0 100 100">
+            <path d="M50 10 C70 35 90 45 50 90 C10 45 30 35 50 10"
+              fill="#d4af37"/>
+          </svg>
+        </div>
 
-    <!-- segel lilin -->
-    <div class="seal"></div>
+        <!-- surat -->
+        <div class="letter" id="letter">
+            <h2>Akad Nikah</h2>
+            <p>Sabtu, 12 April 2026<br>09.00 WIB</p>
 
-    <div class="flap"></div>
+            <h2>Resepsi</h2>
+            <p>13.00 – 17.00 WIB</p>
+        </div>
 
-    <!-- surat keluar -->
-    <div class="letter">
-      <p class="small">Undangan Pernikahan</p>
-      <h2>Nur Indryakni<br>&<br>Muhammad Erfan</h2>
-      <button onclick="openEnvelope()">Buka Undangan</button>
-    </div>
+      </div>
 
   </div>
+
 </div>
 
-
-
-<!-- ================= COVER PREWED ================= -->
-<section class="cover" id="cover">
-
-  <img src="prewed.jpg" class="cover-img">
-
-  <div class="cover-overlay"></div>
-
-  <div class="cover-content">
-    <p class="small fade">The Wedding Of</p>
-
-    <h1 class="title fade">
-      Nur Indryakni<br>&<br>Muhammad Erfan
-    </h1>
-
-    <div id="guestBox" class="fade">
-      <p class="small">Kepada Yth.</p>
-      <h2 id="guestName">Tamu Undangan</h2>
-    </div>
-
-    <button onclick="openInvitation()">Masuk</button>
-  </div>
-
-</section>
-
-
-
-<!-- ================= MAIN ================= -->
-<main id="content" class="hidden container">
-
-  <img src="floral-top.png" class="floral top">
-  <img src="floral-bottom.png" class="floral bottom">
-
-
-  <!-- AYAT -->
-  <section class="card reveal">
-    <p class="italic">
-      “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup
-      agar kamu merasa tenteram dan dijadikan-Nya di antaramu rasa kasih dan sayang.”
-    </p>
-    <p class="small"><b>QS. Ar-Rum : 21</b></p>
-  </section>
-
-
-  <!-- MEMPELAI -->
-  <section class="card reveal">
-    <h2>Mempelai</h2>
-    <div class="divider"></div>
-
-    <p><b>Nur Indryakni</b><br>Putri dari Bapak … & Ibu …</p>
-
-    <div class="divider small-divider"></div>
-
-    <p><b>Muhammad Erfan</b><br>Putra dari Bapak … & Ibu …</p>
-  </section>
-
-
-  <!-- COUNTDOWN -->
-  <section class="card reveal">
-    <h2>Menuju Hari Bahagia</h2>
-    <div id="countdown"></div>
-  </section>
-
-
-  <!-- AKAD -->
-  <section class="card reveal">
-    <h2>Akad Nikah</h2>
-    <div class="divider"></div>
-    <p>
-      Sabtu, 12 April 2026<br>
-      08.00 WIB<br>
-      Ballroom Emerald Hall
-    </p>
-  </section>
-
-
-  <!-- RESEPSI -->
-  <section class="card reveal">
-    <h2>Resepsi</h2>
-    <div class="divider"></div>
-    <p>
-      Sabtu, 12 April 2026<br>
-      11.00 – 14.00 WIB<br>
-      Ballroom Emerald Hall
-    </p>
-  </section>
-
-
-  <!-- MAP -->
-  <section class="card reveal">
-    <h2>Lokasi</h2>
-    <a class="btn"
-       target="_blank"
-       href="https://maps.google.com/?q=Ballroom+Emerald+Hall+Sidoarjo">
-       Buka Google Maps
-    </a>
-  </section>
-
-
-  <!-- QRIS -->
-  <section class="card reveal">
-    <h2>Wedding Gift</h2>
-    <p class="small">Scan QRIS berikut</p>
-    <img src="qris.png" class="qris">
-  </section>
-
-
-  <!-- RSVP -->
-  <section class="card reveal">
-    <h2>Konfirmasi Kehadiran</h2>
-    <a class="btn" id="rsvpBtn">RSVP WhatsApp</a>
-  </section>
-
-
-  <footer>
-    Terima kasih atas doa & restunya<br><br>
-    <b>Nur Indryakni & Muhammad Erfan</b>
-  </footer>
-
-</main>
-
+<!-- sound -->
+<audio id="paperSound" src="https://assets.mixkit.co/active_storage/sfx/1105/1105-preview.mp3" preload="auto"></audio>
 
 
 <script>
-/* ================= ENVELOPE OPEN ================= */
-function openEnvelope(){
-  document.querySelector(".envelope").classList.add("open");
+const envelope = document.getElementById("envelope");
+const sound = document.getElementById("paperSound");
 
-  setTimeout(()=>{
-    envelopeWrap.style.display="none";
-    cover.style.display="flex";
-  },1200);
-}
+envelope.addEventListener("click", () => {
+  envelope.classList.toggle("open");
 
-/* ================= COVER OPEN ================= */
-function openInvitation(){
-  cover.style.display="none";
-  content.classList.remove("hidden");
-  music.play();
-}
-
-
-/* ================= NAMA TAMU ================= */
-const params=new URLSearchParams(window.location.search);
-const guest=params.get("tamu");
-if(guest){
-  guestName.innerText=decodeURIComponent(guest);
-}
-
-
-/* ================= RSVP ================= */
-rsvpBtn.href =
-"https://wa.me/62XXXXXXXXXX?text=Assalamu’alaikum,%20saya%20"+
-(guest||"tamu")+"%20akan%20hadir%20pada%20acara%20pernikahan";
-
-
-/* ================= COUNTDOWN ================= */
-const target=new Date("April 12, 2026 08:00:00");
-setInterval(()=>{
-  const now=new Date();
-  const diff=target-now;
-  const d=Math.floor(diff/86400000);
-  countdown.innerHTML="<b>"+d+"</b> Hari Lagi";
-},1000);
-
-
-/* ================= REVEAL ================= */
-const reveals=document.querySelectorAll(".reveal");
-window.addEventListener("scroll",()=>{
-  reveals.forEach(el=>{
-    if(el.getBoundingClientRect().top < window.innerHeight-80){
-      el.classList.add("active");
-    }
-  });
+  sound.currentTime = 0;
+  sound.volume = 0.25;
+  sound.play();
 });
 </script>
 
