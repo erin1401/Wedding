@@ -146,6 +146,72 @@ body{
   60%{transform:scale(1.08)}
   100%{transform:scale(2.1);opacity:0}
 }
+
+/* ===== MONOGRAM EMBOSS ===== */
+.monogram{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:44px;
+  font-weight:bold;
+  letter-spacing:6px;
+
+  color:rgba(255,255,255,.08);
+
+  text-shadow:
+    1px 1px 0 rgba(0,0,0,.35),
+    -1px -1px 0 rgba(255,255,255,.06);
+
+  z-index:1;
+  pointer-events:none;
+}
+
+
+/* ===== SEGEL LILIN EMAS ===== */
+.seal{
+  position:absolute;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:radial-gradient(circle,#f5d27c,#c9a24d 70%);
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:
+    0 6px 12px rgba(0,0,0,.35),
+    inset 0 0 8px rgba(255,255,255,.5);
+
+  z-index:3;
+  transition:.6s;
+}
+
+/* segel hilang saat buka */
+.envelope.open .seal{
+  opacity:0;
+  transform:translate(-50%,-50%) scale(.6);
+}
+
+
+/* ===== SURAT KELUAR ===== */
+.letter{
+  transform:translateY(40px);
+  transition:1.2s cubic-bezier(.7,0,.2,1);
+}
+
+.envelope.open .letter{
+  transform:translateY(-110px);
+}
+
+
+/* tombol */
+.letter button{
+  padding:10px 24px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#c9a24d,#e7c77d);
+  border:none;
+  cursor:pointer;
+}
 /* ===== COVER ===== */
 .cover{
   display:none;
